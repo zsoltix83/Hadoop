@@ -1,0 +1,33 @@
+
+mkdir /home/project
+cd /home/project
+
+wget http://www.grouplens.org/system/files/ml-100k.zip
+unzip ml-100k.zip
+
+hadoop fs -mkdir /project/movies
+hadoop fs -mkdir /project/userinfo
+
+cd ml-100k
+
+hadoop fs -put u.item /project/movies
+hadoop fs -put u.info /project/userinfo
+
+hive
+
+!hadoop fs -ls /project/;
+
+!hadoop fs -ls /project/userinfo;
+
+!hadoop fs -put /home/project/ml-100k/u.user /project/userinfo;
+
+show tables;
+
+describe formatted userinfo;
+
+SELECT * FROM users limit 100;
+
+SELECT age, occupation FROM users;
+
+SELECT count(*) FROM users WHERE occupation = 'artist';
+
